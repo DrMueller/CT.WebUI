@@ -1,0 +1,10 @@
+﻿version: "3"
+
+services:
+  ct-webui:
+    image: __ImageName__
+    ports:
+      - 81:80
+    deploy:
+      replicas: 2
+

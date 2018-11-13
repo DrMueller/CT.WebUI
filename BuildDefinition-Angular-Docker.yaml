@@ -1,0 +1,97 @@
+name: 1.0$(rev:.r) # build numbering format
+
+resources:
+- repo: self
+queue:
+  name: Hosted Ubuntu 1604
+  demands: npm
+
+steps:
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: false
+
+
+- task: Npm@1
+  displayName: 'npm NG Lint'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ng lint'
+
+
+- powershell: ./'scripts/Update-EnvironmentConfig.ps1'
+  arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -buildNumber $(Build.BuildNumber)'
+
+  displayName: 'Update Environment Config'
+
+- task: Npm@1
+  displayName: 'npm NG Build'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ng build'
+
+
+- task: YodLabs.VariableTasks.SetVariable.SetVariable@0
+  displayName: 'Set Variable ImageName to $(Build.Repository.Name) with toLowerCase applied'
+  inputs:
+    variableName: ImageName
+
+    value: '$(Build.Repository.Name)'
+
+    transform: toLowerCase
+
+
+- task: YodLabs.VariableTasks.SetVariable.SetVariable@0
+  displayName: 'Set Variable ImageName to $(ImageName) with replace applied'
+  inputs:
+    variableName: ImageName
+
+    value: '$(ImageName)'
+
+    transform: replace
+
+    searchValue: '\.'
+
+    newValue: '-'
+
+
+- task: Docker@0
+  displayName: 'Build Docker Image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+
+    dockerRegistryConnection: DockerHub
+
+    imageName: '$(ImageName)'
+
+    additionalImageTags: '$(Build.BuildNumber)'
+
+
+- task: Docker@0
+  displayName: 'Push Docker Image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+
+    dockerRegistryConnection: DockerHub
+
+    action: 'Push an image'
+
+    imageName: '$(ImageName)'
+
+    additionalImageTags: '$(Build.BuildNumber)'
+
+    includeLatestTag: true
+
+
+- powershell: ./'scripts/Update-Dockerstack.ps1'
+  arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -imageName $(ImageName):$(Build.BuildNumber)'
+
+  displayName: 'Update DockerStack'
+

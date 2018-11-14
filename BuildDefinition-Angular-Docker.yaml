@@ -91,7 +91,12 @@ steps:
 
 
 - powershell: ./'scripts/Update-Dockerstack.ps1'
-  arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -imageName $(ImageName):$(Build.BuildNumber)'
+
+    arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -imageName $(ImageName):$(Build.BuildNumber)'
 
   displayName: 'Update DockerStack'
 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish DockerStack'
+  inputs:
+    PathtoPublish: 'docker-stack.yml'

@@ -23,10 +23,13 @@ steps:
     customCommand: 'run ng lint'
 
 
-- powershell: ./'scripts/Update-EnvironmentConfig.ps1'
-  arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -buildNumber $(Build.BuildNumber)'
-
+- task: powershell@2
   displayName: 'Update Environment Config'
+  inputs:
+    targetType: filePath
+    filePath: './scripts/Update-EnvironmentConfig.ps1'
+    arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -buildNumber $(Build.BuildNumber)'
+
 
 - task: Npm@1
   displayName: 'npm NG Build'

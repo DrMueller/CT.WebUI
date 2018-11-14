@@ -4,7 +4,7 @@ services:
   ct-webui:
     image: __ImageName__
     ports:
-      - 81:80
+      - 8080:80
     deploy:
       replicas: 2
 

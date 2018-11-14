@@ -38,7 +38,7 @@ steps:
 
     verbose: false
 
-    customCommand: 'run ng build'
+    customCommand: 'run build-prod'
 
 
 - task: YodLabs.VariableTasks.SetVariable.SetVariable@0

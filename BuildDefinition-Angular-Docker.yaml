@@ -8,13 +8,13 @@ queue:
 
 steps:
 - task: Npm@1
-  displayName: 'npm install'
+  displayName: 'NPM install'
   inputs:
     verbose: false
 
 
 - task: Npm@1
-  displayName: 'npm NG Lint'
+  displayName: 'NPM NG Lint'
   inputs:
     command: custom
 
@@ -32,7 +32,7 @@ steps:
 
 
 - task: Npm@1
-  displayName: 'npm NG Build'
+  displayName: 'NPM NG Build'
   inputs:
     command: custom
 

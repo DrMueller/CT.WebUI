@@ -90,11 +90,12 @@ steps:
     includeLatestTag: true
 
 
-- powershell: ./'scripts/Update-Dockerstack.ps1'
-
-    arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -imageName $(ImageName):$(Build.BuildNumber)'
-
+- task: powershell@2
   displayName: 'Update DockerStack'
+  inputs:
+    targetType: filePath
+    filePath: './Scripts/Update-Dockerstack.ps1' 
+    arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -imageName $(ImageName):$(Build.BuildNumber)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish DockerStack'

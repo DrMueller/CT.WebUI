@@ -97,7 +97,7 @@ steps:
   displayName: 'Update DockerStack'
   inputs:
     targetType: filePath
-    filePath: './Scripts/Update-Dockerstack.ps1' 
+    filePath: './scripts/Update-Dockerstack.ps1' 
     arguments: '-repositoryLocalPath $(Build.Repository.LocalPath) -imageName $(ImageName):$(Build.BuildNumber)'
 
 - task: PublishBuildArtifacts@1

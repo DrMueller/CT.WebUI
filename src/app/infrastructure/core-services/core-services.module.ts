@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import * as environment from './environment';
+import * as appSettings from './app-settings';
 import * as http from './http';
 
 @NgModule({
@@ -21,8 +21,9 @@ export class CoreServicesModule {
     return {
       ngModule: CoreServicesModule,
       providers: [
-        environment.EnvironmentService,
+        appSettings.AppSettingsProviderService,
         http.CoreHttpService,
+        http.LocalHttpService
       ]
     };
   }

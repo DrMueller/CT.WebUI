@@ -1,3 +1,3 @@
 export * from './http';
-export * from './environment';
+export * from './app-settings';
 export * from './core-services.module';

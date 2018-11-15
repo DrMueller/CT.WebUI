@@ -5,6 +5,7 @@ import { MatTableComponent, ColumnDefinitionsContainer } from '@drmueller/ng-mat
 import { IndividualOverviewDto } from '../../dtos';
 import { IndividualsOverviewService, IndividualsNavigationService } from '../../services';
 import { IndividualColDefBuilderService } from '../../services';
+import { AppSettingsProviderService } from 'src/app/infrastructure/core-services';
 
 @Component({
   selector: 'app-individuals-overview',
@@ -21,6 +22,7 @@ export class IndividualsOverviewComponent implements OnInit {
     private individualColDefBuilder: IndividualColDefBuilderService,
     private individualOverviewService: IndividualsOverviewService,
     private navigationService: IndividualsNavigationService,
+    private apSettingsProvider: AppSettingsProviderService,
     private snackBar: MatSnackBar) {
   }
 
@@ -44,6 +46,10 @@ export class IndividualsOverviewComponent implements OnInit {
 
   public ngOnInit(): void {
     this.columnDefinitions = this.individualColDefBuilder.buildDefinitions();
+
+    this.apSettingsProvider.provideAppSettingsAsync().then(tra => {
+
+    });
 
     setTimeout(() => {
       this.snackBar.open('Loading Individuals..', null, <MatSnackBarConfig<any>>{

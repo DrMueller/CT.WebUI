@@ -5,7 +5,7 @@ import { MatTableComponent, ColumnDefinitionsContainer } from '@drmueller/ng-mat
 import { IndividualOverviewDto } from '../../dtos';
 import { IndividualsOverviewService, IndividualsNavigationService } from '../../services';
 import { IndividualColDefBuilderService } from '../../services';
-import { AppSettingsProviderService } from 'src/app/infrastructure/core-services';
+import { AppSettingsProviderService, AppSettings } from 'src/app/infrastructure/core-services';
 
 @Component({
   selector: 'app-individuals-overview',
@@ -17,6 +17,7 @@ export class IndividualsOverviewComponent implements OnInit {
   public columnDefinitions: ColumnDefinitionsContainer<IndividualOverviewDto>;
   public individuals: IndividualOverviewDto[] = [];
   public selectedIndividuals: IndividualOverviewDto[] = [];
+  public tra: AppSettings;
 
   public constructor(
     private individualColDefBuilder: IndividualColDefBuilderService,
@@ -48,7 +49,7 @@ export class IndividualsOverviewComponent implements OnInit {
     this.columnDefinitions = this.individualColDefBuilder.buildDefinitions();
 
     this.apSettingsProvider.provideAppSettingsAsync().then(tra => {
-
+      this.tra = tra;
     });
 
     setTimeout(() => {

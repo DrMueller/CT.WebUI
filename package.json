@@ -25,7 +25,7 @@
     "@angular/router": "^6.0.3",
     "@drmueller/language-extensions": "^2.0.5",
     "@drmueller/ng-app-navigation": "^2.0.7",
-    "@drmueller/ng-base-services": "^2.0.6",
+    "@drmueller/ng-base-services": "^2.0.7",
     "@drmueller/ng-data-access": "^2.0.3",
     "@drmueller/ng-error-handling": "^2.0.3",
     "@drmueller/ng-material-extensions": "^2.0.7",

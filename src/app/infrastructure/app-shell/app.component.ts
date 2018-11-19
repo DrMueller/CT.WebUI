@@ -15,7 +15,7 @@ export class AppComponent {
 
   private createSomeEntries(): AppNavigationEntry[] {
     return [
-      new AppNavigationEntry('Individuals', '/individuals', true)
+      new AppNavigationEntry('Individuals', '/individuals/overview', true)
     ];
   }
 }

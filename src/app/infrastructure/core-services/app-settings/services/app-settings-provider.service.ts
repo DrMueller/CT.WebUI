@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppSettings } from '../models';
-import { LocalHttpService } from '../../http';
+import { LocalHttpService } from '../../http/local-http.service';
 
 @Injectable()
 export class AppSettingsProviderService {
@@ -14,7 +14,8 @@ export class AppSettingsProviderService {
       return Promise.resolve(this.appSettings);
     }
 
-    this.appSettings = await this.http.getAsync<AppSettings>('../../../../../assets/app-settings/appsettings.json');
+    // This path needs to be relative to the files in the dist-folder
+    this.appSettings = await this.http.getAsync<AppSettings>('./assets/app-settings/appsettings.json');
     return this.appSettings;
   }
 }

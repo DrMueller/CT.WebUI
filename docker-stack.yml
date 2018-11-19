@@ -8,6 +8,4 @@ services:
     deploy:
       replicas: 2
     environment:
-      - NGINX_HOST=foobar.com
-      - NGINX_PORT=80
-    command: /bin/bash -c "envsubst < /usr/share/nginx/html/assets/app-settings/appsettings.production.json > /usr/share/nginx/html/assets/app-settings/appsettings.json && exec nginx -g 'daemon off;'"
+    command: /bin/bash -c "envsubst < /usr/share/nginx/html/assets/app-settings/appsettings.__EnvironmentName__.json > /usr/share/nginx/html/assets/app-settings/appsettings.json && exec nginx -g 'daemon off;'"

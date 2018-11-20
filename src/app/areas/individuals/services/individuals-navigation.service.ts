@@ -6,14 +6,14 @@ export class IndividualsNavigationService {
   constructor(private router: Router) { }
 
   public navigateToOverview(): void {
-    this.router.navigate(['/individuals']);
+    this.router.navigate(['individuals']);
   }
 
   public navigateToCreateIndividual(): void {
-    this.router.navigate(['/individuals', '-1']);
+    this.router.navigate(['individuals', '-1']);
   }
 
   public navigateToEditIndividual(id: string): void {
-    this.router.navigate(['/individuals', id]);
+    this.router.navigate(['individuals', id]);
   }
 }

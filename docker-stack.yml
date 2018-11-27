@@ -7,4 +7,4 @@ services:
       - 8080:80
     deploy:
       replicas: 2
-    command: /bin/bash -c "cp /usr/share/nginx/html/assets/app-settings/appsettings.__EnvironmentName__.json /usr/share/nginx/html/assets/app-settings/appsettings.json && exec nginx -g 'daemon off;'"
+    command: /bin/bash -c "cp /usr/share/nginx/html/assets/app-settings/appsettings.__EnvironmentName__.json /usr/share/nginx/html/assets/app-settings/appsettings.json && ls | grep -P "^(?!appsettings.json$).*" | xargs -d"\n" rm && exec nginx -g 'daemon off;'"

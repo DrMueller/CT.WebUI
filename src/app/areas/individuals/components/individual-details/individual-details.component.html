@@ -2,40 +2,39 @@
   <mat-card class="mat-card">
     <mat-card-title>Actions</mat-card-title>
     <mat-card-content>
-      <button mat-raised-button [disabled]="!dataForm.isFormValid" (click)="saveAsync()" color="primary">Save</button>
+      <button mat-raised-button drmCommandButton [command]="saveIndividualCommand" color="primary">Save Individual</button>
+      <button mat-raised-button drmCommandButton [command]="cancelCommand" color="accent">Cancel</button>
     </mat-card-content>
   </mat-card>
 
   <mat-card class="mat-card">
     <mat-card-title>{{ title }}</mat-card-title>
     <mat-card-content>
-      <form class="example-form" [formGroup]="dataForm.formGroup">
+      <form class="example-form" [formGroup]="individualFormGroup">
         <div class="form-fields-row">
           <div class="form-field">
-            <drm-form-control-with-validation [formGroup]="dataForm.formGroup" [validatedControl]="dataForm.getValidatedControl('firstName')">
-              <mat-form-field>
-                <input matInput type="text" class="form-control" placeholder="Enter first name" formControlName="firstName">
-              </mat-form-field>
-            </drm-form-control-with-validation>
+            <mat-form-field>
+              <input matInput type="text" class="form-control" placeholder="Enter first name" formControlName="firstName">
+            </mat-form-field>
+            <drm-validation-errors [formControlToValidate]="individualFormGroup.controls['firstName']"></drm-validation-errors>
           </div>
 
           <div class="form-field">
-            <drm-form-control-with-validation [formGroup]="dataForm.formGroup" [validatedControl]="dataForm.getValidatedControl('lastName')">
-              <mat-form-field>
-                <input matInput type="text" class="form-control" placeholder="Enter last name" formControlName="lastName">
-              </mat-form-field>
-            </drm-form-control-with-validation>
+            <mat-form-field>
+              <input matInput type="text" class="form-control" placeholder="Enter last name" formControlName="lastName">
+            </mat-form-field>
+            <drm-validation-errors [formControlToValidate]="individualFormGroup.controls['lastName']"></drm-validation-errors>
+
           </div>
 
           <div class="form-field">
-            <drm-form-control-with-validation [formGroup]="dataForm.formGroup" [validatedControl]="dataForm.getValidatedControl('birthdate')">
-              <mat-form-field>
-                <input [matDatepicker]="birthDatePicker" matInput type="text" class="form-control" placeholder="Enter birth date"
-                  formControlName="birthdate">
-                <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker #birthDatePicker></mat-datepicker>
-              </mat-form-field>
-            </drm-form-control-with-validation>
+            <mat-form-field>
+              <input [matDatepicker]="birthDatePicker" matInput type="text" placeholder="Enter birth date"
+                formControlName="birthdate" formControlName="birthdate">
+              <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #birthDatePicker></mat-datepicker>
+            </mat-form-field>
+            <drm-validation-errors [formControlToValidate]="individualFormGroup.controls['birthdate']"></drm-validation-errors>
           </div>
         </div>
       </form>

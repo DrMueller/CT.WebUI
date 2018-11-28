@@ -1,23 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { NgMaterialExtensionsModule } from '@drmueller/ng-material-extensions';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NgRxFormsModule } from '@drmueller/ng-rx-forms';
+
+import { NgBaseDirectivesModule } from '@drmueller/ng-base-directives';
+import { NgMaterialExtensionsModule } from '@drmueller/ng-material-extensions';
+import { NgRxForms2Module } from '@drmueller/ng-rx-forms2';
 
 import * as components from './components';
 import * as services from './services';
+import { IndividualsRoutingModule } from './individuals-routing.module';
 import * as repositories from './repositories';
 import * as resolvers from './resolvers';
-import { IndividualsRoutingModule } from './individuals-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     IndividualsRoutingModule,
     NgMaterialExtensionsModule,
-    NgRxFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgRxForms2Module,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    NgBaseDirectivesModule
   ],
   declarations: [
     components.IndividualDetailsComponent,

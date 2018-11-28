@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
-import { MatTableComponent, ColumnDefinitionsContainer } from '@drmueller/ng-material-extensions';
+import { ColumnDefinitionsContainer, MatTableComponent } from '@drmueller/ng-material-extensions';
+
 import { IndividualOverviewDto } from '../../dtos';
-import { IndividualsOverviewService, IndividualsNavigationService } from '../../services';
-import { IndividualColDefBuilderService } from '../../services';
-import { AppSettingsProviderService, AppSettings } from 'src/app/infrastructure/core-services';
+import {
+  IndividualColDefBuilderService, IndividualsNavigationService, IndividualsOverviewService
+} from '../../services';
+import { RelayCommand } from '@drmueller/ng-base-directives';
 
 @Component({
   selector: 'app-individuals-overview',
@@ -13,17 +15,19 @@ import { AppSettingsProviderService, AppSettings } from 'src/app/infrastructure/
   styleUrls: ['./individuals-overview.component.scss']
 })
 export class IndividualsOverviewComponent implements OnInit {
+
+  public editIndividualCommand: RelayCommand;
   @ViewChild(MatTableComponent) public table: MatTableComponent<IndividualOverviewDto>;
   public columnDefinitions: ColumnDefinitionsContainer<IndividualOverviewDto>;
+  public createIndividualCommand: RelayCommand;
+  public deleteIndividualCommand: RelayCommand;
   public individuals: IndividualOverviewDto[] = [];
   public selectedIndividuals: IndividualOverviewDto[] = [];
-  public tra: AppSettings;
 
   public constructor(
     private individualColDefBuilder: IndividualColDefBuilderService,
     private individualOverviewService: IndividualsOverviewService,
     private navigationService: IndividualsNavigationService,
-    private apSettingsProvider: AppSettingsProviderService,
     private snackBar: MatSnackBar) {
   }
 
@@ -31,26 +35,12 @@ export class IndividualsOverviewComponent implements OnInit {
     this.navigationService.navigateToCreateIndividual();
   }
 
-  public async deleteSelectedIndividuals(): Promise<void> {
-    await this.individualOverviewService.deleteIndividualsAsync(this.selectedIndividuals.map(ind => ind.individualId));
-    this.table.deleteEntris(this.selectedIndividuals);
-  }
-
-  public editSelectedIndividual(): void {
-    const selectedIndividualId = this.selectedIndividuals[0].individualId;
-    this.navigationService.navigateToEditIndividual(selectedIndividualId);
-  }
-
-  public get areIndividualsSelected(): boolean {
-    return this.selectedIndividuals && this.selectedIndividuals.length > 0;
-  }
-
   public ngOnInit(): void {
     this.columnDefinitions = this.individualColDefBuilder.buildDefinitions();
 
-    this.apSettingsProvider.provideAppSettingsAsync().then(tra => {
-      this.tra = tra;
-    });
+    this.deleteIndividualCommand = new RelayCommand(() => this.deleteIndividualAsync(), () => this.areIndividualsSelected);
+    this.editIndividualCommand = new RelayCommand(() => this.editIndividual(), () => this.areIndividualsSelected);
+    this.createIndividualCommand = new RelayCommand(() => this.navigationService.navigateToCreateIndividual(), () => true);
 
     setTimeout(() => {
       this.snackBar.open('Loading Individuals..', null, <MatSnackBarConfig<any>>{
@@ -69,5 +59,19 @@ export class IndividualsOverviewComponent implements OnInit {
 
   public rowSelectionChanged(selectedItems: IndividualOverviewDto[]): void {
     this.selectedIndividuals = selectedItems;
+  }
+
+  private async deleteIndividualAsync(): Promise<void> {
+    await this.individualOverviewService.deleteIndividualsAsync(this.selectedIndividuals.map(ind => ind.individualId));
+    this.table.deleteEntris(this.selectedIndividuals);
+  }
+
+  private editIndividual(): void {
+    const selectedIndividualId = this.selectedIndividuals[0].individualId;
+    this.navigationService.navigateToEditIndividual(selectedIndividualId);
+  }
+
+  private get areIndividualsSelected(): boolean {
+    return this.selectedIndividuals && this.selectedIndividuals.length > 0;
   }
 }

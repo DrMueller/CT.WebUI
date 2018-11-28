@@ -1,35 +1,17 @@
 import { Injectable } from '@angular/core';
-
-import { IndividualDetailsDto } from '../dtos';
-import { RxFormBuilder, ValidatorFactoryService, FormWithValidation } from '@drmueller/ng-rx-forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Injectable()
 export class IndividualDetailsFormBuilderService {
-
-  constructor(
-    private formBuilder: RxFormBuilder<IndividualDetailsDto>,
-    private validatorFactory: ValidatorFactoryService
+  public constructor(
+    private formBuilder: FormBuilder
   ) { }
 
-  public buildForm(): FormWithValidation<IndividualDetailsDto> {
-    return this.formBuilder.startBuildingFormGroup()
-      .withControl('firstName')
-      .withModelBinding('firstName')
-      .withValidation(this.validatorFactory.required())
-      .buildValidationKeyErrorMap()
-      .buildControl()
-      .withControl('lastName')
-      .withModelBinding('lastName')
-      .withValidation(this.validatorFactory.minLength(5))
-      .buildValidationKeyErrorMap()
-      .buildControl()
-      .withControl('birthdate')
-      .withModelBinding('birthdate')
-      .withDefaultValue(new Date(1986, 12, 29))
-      .buildControl()
-      .withFormValidationWatcher()
-      .withDebounceTime(500)
-      .buildFormWatcher()
-      .buildForm();
+  public buildFormGroup(): FormGroup {
+    return this.formBuilder.group({
+      firstName: ['', [Validators.required, Validators.minLength(5)]],
+      lastName: ['', [Validators.required]],
+      birthdate: [new Date(1986, 12, 29)]
+    });
   }
 }

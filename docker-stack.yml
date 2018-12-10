@@ -8,3 +8,4 @@ services:
     deploy:
       replicas: 2
     command: /bin/bash -c "cp /usr/share/nginx/html/assets/app-settings/appsettings.__EnvironmentName__.json /usr/share/nginx/html/assets/app-settings/appsettings.json && find "/usr/share/nginx/html/assets/app-settings/" -type f -name "*.json" -not -name "appsettings.json" -exec rm {} ';' && exec nginx -g 'daemon off;'"
+    

@@ -11,6 +11,7 @@ export class CoreHttpService extends HttpBaseService {
     private appSettingsProvider: AppSettingsProviderService) {
     super(httpClient, objectFactoryService);
   }
+
   protected async getBaseUrlAsync(): Promise<string> {
     return this.appSettingsProvider.provideAppSettingsAsync().then(s => s.coreServiceBaseUrl);
   }

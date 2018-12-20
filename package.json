@@ -8,6 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "e2e-debug-serve": "ng serve --port=4201",
+    "e2e-debug-start": "node --inspect --inspect-brk ./node_modules/protractor/bin/protractor ./e2e/protractor.conf.js --baseUrl=http://localhost:4201/",
     "build-prod": "ng build --output-path=dist --prod --aot=false --build-optimizer=false"
   },
   "private": true,

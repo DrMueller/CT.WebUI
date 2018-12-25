@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-title>Actions</mat-card-title>
+  <mat-card-content>
+    <button uitesting="createIndividual" mat-stroked-button drmCommandButton [command]="createIndividualCommand">Create</button>
+    <button uitesting="editIndividual" mat-stroked-button drmCommandButton [command]="editIndividualCommand">Edit</button>
+    <button uitesting="deleteIndividual" mat-stroked-button drmCommandButton [command]="deleteIndividualCommand" color="accent">Delete</button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-title>Individuals</mat-card-title>
+  <mat-card-content>
+    <drm-mat-table uitesting="individualsOverview" (selectionChanged)="rowSelectionChanged($event)" [columnDefinitions]="columnDefinitions" [data]="individuals"></drm-mat-table>
+  </mat-card-content>
+</mat-card>
+<p>

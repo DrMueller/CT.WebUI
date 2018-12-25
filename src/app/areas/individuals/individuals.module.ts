@@ -6,14 +6,25 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { NgBaseDirectivesModule } from '@drmueller/ng-base-directives';
+import { DATA_PROVIDER_TOKEN, DTO_ADAPTER_TOKEN } from '@drmueller/ng-base-services';
 import { NgMaterialExtensionsModule } from '@drmueller/ng-material-extensions';
 import { NgRxForms2Module } from '@drmueller/ng-rx-forms2';
 
-import * as components from './components';
-import * as services from './services';
+import { IndividualInMemoryProviderService } from './common/mock-data/services';
+import { IndividualAdapterService } from './common/mock-data/services/adapters';
+import { IndividualRepositoryService } from './common/repositories';
+import { IndividualsNavigationService } from './common/services';
+import { IndividualDetailsComponent } from './details/components/individual-details';
+import { IndividualDetailsResolver } from './details/resolvers';
+import {
+  IndividualDetailsDataService, IndividualDetailsFormBuilderService
+} from './details/services';
+import { IndividualsComponent } from './entry-point/components/individuals';
 import { IndividualsRoutingModule } from './individuals-routing.module';
-import * as repositories from './repositories';
-import * as resolvers from './resolvers';
+import { IndividualsOverviewComponent } from './overview/components/individuals-overview';
+import {
+  IndividualColDefBuilderService, IndividualsOverviewDataService
+} from './overview/services';
 
 @NgModule({
   imports: [
@@ -28,19 +39,30 @@ import * as resolvers from './resolvers';
     NgBaseDirectivesModule
   ],
   declarations: [
-    components.IndividualDetailsComponent,
-    components.IndividualsComponent,
-    components.IndividualsOverviewComponent
+    IndividualDetailsComponent,
+    IndividualsComponent,
+    IndividualsOverviewComponent
   ],
   providers: [
-    services.IndividualColDefBuilderService,
-    services.IndividualDetailsService,
-    services.IndividualsNavigationService,
-    services.IndividualsOverviewService,
-    services.IndividualDetailsFormBuilderService,
-    repositories.IndividualRepositoryService,
-    resolvers.IndividualDetailsResolver
+    {
+      provide: DATA_PROVIDER_TOKEN,
+      multi: true,
+      useClass: IndividualInMemoryProviderService
+    },
+    {
+      provide: DTO_ADAPTER_TOKEN,
+      multi: true,
+      useClass: IndividualAdapterService
+    },
+    IndividualColDefBuilderService,
+    IndividualDetailsDataService,
+    IndividualsNavigationService,
+    IndividualsOverviewDataService,
+    IndividualDetailsFormBuilderService,
+    IndividualRepositoryService,
+    IndividualDetailsResolver
   ]
 })
 
-export class IndividualsModule { }
+export class IndividualsModule {
+}

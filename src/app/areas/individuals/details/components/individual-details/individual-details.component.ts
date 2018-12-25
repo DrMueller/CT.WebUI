@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -26,7 +26,8 @@ export class IndividualDetailsComponent implements OnInit {
     private builder: IndividualDetailsFormBuilderService,
     private binder: RxFormModelBindingService,
     private dataService: IndividualDetailsDataService,
-    private navigationService: IndividualsNavigationService) { }
+    private navigationService: IndividualsNavigationService,
+    private changeDetector: ChangeDetectorRef) { }
 
   public get title(): string {
     if (this.individual.individualId) {
@@ -50,6 +51,9 @@ export class IndividualDetailsComponent implements OnInit {
       this.individual = <IndividualDetailsDto>data['individual'];
       this.binder.bindModelToFormGroup(this.individual, this.individualFormGroup);
     });
+
+    // No idea why this is needed here, but not in the overview
+    this.changeDetector.detectChanges();
   }
 
   private async saveIndividualAsync(): Promise<void> {

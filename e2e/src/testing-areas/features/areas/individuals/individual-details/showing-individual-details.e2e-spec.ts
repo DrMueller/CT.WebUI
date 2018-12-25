@@ -1,4 +1,4 @@
-import { IndividualDetailsPage } from '../../../pages/areas/individuals/components';
+import { IndividualDetailsPage } from '../../../../pages/areas/individuals/components';
 
 // Feature
 describe('Showing Individual Details', () => {
@@ -11,18 +11,18 @@ describe('Showing Individual Details', () => {
   // Scenario - New Individual
   describe('Given a new Individual', () => {
     beforeEach(async () => {
-      await individualDetailsPage.navigateTo('-1');
+      await individualDetailsPage.navigateToDetails('-1');
     });
 
     describe('When the Details are loaded', () => {
       it('Then all Controls are empty', async () => {
-        expect(individualDetailsPage.firstNameInput.getText()).toBe('');
-        expect(individualDetailsPage.lastNameInput.getText()).toBe('');
-        expect(individualDetailsPage.birthdateInput.getText()).toBe('');
+        expect(individualDetailsPage.firstNameInput.text).toBe('');
+        expect(individualDetailsPage.lastNameInput.text).toBe('');
+        expect(individualDetailsPage.birthdateInput.text).toBe('');
       });
 
       it('Then the save button is disabled', () => {
-        expect(individualDetailsPage.saveButton.getAttribute('disabled')).toBeFalsy();
+        expect(individualDetailsPage.saveButton.isEnabled).toBe(false);
       });
     });
   });

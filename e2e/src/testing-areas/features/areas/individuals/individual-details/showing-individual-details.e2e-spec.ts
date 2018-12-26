@@ -16,7 +16,7 @@ describe('Showing Individual Details', () => {
 
     describe('When the Details are loaded', () => {
       it('Then all Controls are empty', async () => {
-        expect(individualDetailsPage.firstNameInput.text).toBe('tra');
+        expect(individualDetailsPage.firstNameInput.text).toBe('');
         expect(individualDetailsPage.lastNameInput.text).toBe('');
         expect(individualDetailsPage.birthdateInput.text).toBe('');
       });

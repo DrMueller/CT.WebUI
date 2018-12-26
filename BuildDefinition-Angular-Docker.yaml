@@ -24,6 +24,16 @@ steps:
 
 
 - task: Npm@1
+  displayName: 'NPM Run End2End Tests'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ng e2e'
+
+
+- task: Npm@1
   displayName: 'NPM NG Build'
   inputs:
     command: custom

@@ -1,4 +1,4 @@
-import { IndividualDetailsPage } from '../../../../pages/areas/individuals/components';
+import { IndividualDetailsPage } from '../../../../../testing-infrastructure';
 
 // Feature
 describe('Showing Individual Details', () => {

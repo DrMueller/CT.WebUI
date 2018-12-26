@@ -109,6 +109,18 @@
             }
           }
         },
+        "ci": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor-ci.conf.js",
+            "devServerTarget": "container-testing:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "container-testing:serve:production"
+            }
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {

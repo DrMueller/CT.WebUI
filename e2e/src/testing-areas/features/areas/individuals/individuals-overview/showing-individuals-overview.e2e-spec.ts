@@ -1,4 +1,4 @@
-import { IndividualsOverviewPage } from '../../../../pages/areas/individuals/components';
+import { IndividualsOverviewPage } from '../../../../../testing-infrastructure';
 
 describe('Showing Individuals Overview', () => {
   const individualsOverviewPage = new IndividualsOverviewPage();

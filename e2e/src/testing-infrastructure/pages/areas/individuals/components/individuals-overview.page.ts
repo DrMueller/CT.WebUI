@@ -1,8 +1,6 @@
 import { browser, by, element, ElementFinder, promise } from 'protractor';
 
-import {
-  BasePage, ButtonComponent, PageComponentFactoryService
-} from '../../../../../testing-infrastructure/page-blocks';
+import { ButtonComponent, BasePage, PageComponentFactoryService } from '@drmueller/testing';
 
 export class IndividualsOverviewPage extends BasePage {
   private static readonly relativeUrl = '#/individuals/overview';

@@ -1,8 +1,6 @@
 import { promise } from 'protractor';
+import { InputComponent, BasePage, ButtonComponent, PageComponentFactoryService } from '@drmueller/testing';
 
-import {
-  BasePage, ButtonComponent, InputComponent, PageComponentFactoryService
-} from '../../../../../testing-infrastructure/page-blocks';
 
 export class IndividualDetailsPage extends BasePage {
   public get birthdateInput(): InputComponent {

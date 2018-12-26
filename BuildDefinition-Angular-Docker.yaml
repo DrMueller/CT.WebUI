@@ -30,7 +30,7 @@ steps:
 
     verbose: false
 
-    customCommand: 'run ng e2e'
+    customCommand: 'npm run e2e-ci'
 
 
 - task: Npm@1

@@ -1,8 +1,6 @@
 import { by, ElementFinder, promise, protractor } from 'protractor';
 
-import {
-  IndividualDetailsPage, IndividualsOverviewPage
-} from '../../../../pages/areas/individuals/components';
+import { IndividualDetailsPage, IndividualsOverviewPage } from '../../../../../testing-infrastructure';
 import moment = require('moment');
 
 // Feature

@@ -24,7 +24,7 @@ steps:
 
 
 - task: Npm@1
-  displayName: 'NPM Run End2End Tests'
+  displayName: 'NPM NG Run End2End Tests'
   inputs:
     command: custom
 

@@ -11,7 +11,7 @@
     "e2e-ci": "ng run container-testing-e2e:ci",
     "e2e-debug-serve": "ng serve --port=4201",
     "e2e-debug-start": "node --inspect --inspect-brk ./node_modules/protractor/bin/protractor ./e2e/protractor.conf.js --baseUrl=http://localhost:4201/",
-    "build-prod": "ng build --output-path=dist --prod --aot=false --build-optimizer=false",
+    "build-prod": "ng build --output-path=dist --prod",
     "unit-test-ci": "ng run container-testing:test",
     "unit-test-chrome": "ng test --browsers=Chrome"
   },
@@ -34,7 +34,7 @@
     "@drmueller/ng-base-directives": "^2.0.14",
     "@drmueller/ng-base-services": "^2.1.18",
     "@drmueller/ng-data-access": "^2.1.2",
-    "@drmueller/ng-error-handling": "^2.0.5",
+    "@drmueller/ng-error-handling": "^2.1.3",
     "@drmueller/ng-material-extensions": "^2.0.10",
     "@drmueller/ng-rx-forms2": "^2.0.7",
     "@drmueller/testing": "^2.0.4",

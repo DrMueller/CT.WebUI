@@ -6,7 +6,7 @@ import { ColumnDefinitionsContainer, MatTableComponent } from '@drmueller/ng-mat
 
 import { IndividualsNavigationService } from '../../../common/services';
 import { IndividualOverviewEntryDto } from '../../dtos';
-import { IndividualsOverviewDataService, IndividualColDefBuilderService, } from '../../services';
+import { IndividualColDefBuilderService, IndividualsOverviewDataService } from '../../services';
 
 @Component({
   selector: 'app-individuals-overview',

@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { AppSettingsProviderService, HttpBaseService, ObjectFactoryService } from '@drmueller/ng-base-services';
+import {
+  AppSettingsProviderService, HttpBaseService, ObjectFactoryService
+} from '@drmueller/ng-base-services';
+
 import { AppSettings } from '../app-settings';
 
 @Injectable({

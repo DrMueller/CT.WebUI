@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { DATA_PROVIDER_TOKEN, DTO_ADAPTER_TOKEN } from '@drmueller/ng-base-services';
 
 import {
-  IndividualInMemoryProviderService
+  IndividualInMemoryProviderService, IndividualLocalStorageRepositoryService
 } from 'src/app/areas/individuals/common/mock-data/services';
 import {
   IndividualAdapterService
@@ -26,6 +26,8 @@ import {
       multi: true,
       useClass: IndividualAdapterService
     },
+    IndividualLocalStorageRepositoryService
   ]
 })
+
 export class EagerLoadedAreaServicesModule { }

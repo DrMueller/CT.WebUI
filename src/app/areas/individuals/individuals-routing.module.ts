@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { IndividualDetailsComponent } from './details/components/individual-details';
 import { IndividualDetailsResolver } from './details/resolvers';
 import { IndividualsComponent } from './entry-point/components/individuals';

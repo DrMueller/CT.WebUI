@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IndividualRepositoryService } from '../../common/repositories/individual-repository.service';
+
+import {
+  IndividualRepositoryService
+} from '../../common/repositories/individual-repository.service';
 import { IndividualsServicesModule } from '../../individuals-services.module';
 import { IndividualOverviewEntryDto } from '../dtos';
 

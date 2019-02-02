@@ -6,9 +6,7 @@ import {
 
 import { Individual } from '../../models';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class IndividualLocalStorageRepositoryService extends BaseLocalStorageRepositoryService<Individual> {
   public constructor(tableFactory: LocalStorageTableFactoryService<Individual>) {
     super(tableFactory);

@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 import { IDtoAdapterService } from '@drmueller/ng-base-services';
 
 import { Individual } from '../../../models';
-import { IndividualRepositoryService } from '../../../repositories';
+import { IndividualRepositoryService } from '../../../repositories/individual-repository.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class IndividualAdapterService implements IDtoAdapterService<Individual, Individual> {
   public get collectionName(): string {
     return IndividualRepositoryService.RelativeUrlPath;

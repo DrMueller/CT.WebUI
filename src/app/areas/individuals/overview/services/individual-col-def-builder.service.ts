@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 
+import { IndividualsServicesModule } from '../../individuals-services.module';
+
 import {
-  ColDefBuilderFactoryService, ColumnDefinitionsContainer
+  ColumnDefinitionsContainer, ColDefBuilderFactoryService
 } from '@drmueller/ng-material-extensions';
 
 import { IndividualOverviewEntryDto } from '../dtos';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: IndividualsServicesModule
 })
 export class IndividualColDefBuilderService {
 

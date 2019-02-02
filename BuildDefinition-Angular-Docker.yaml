@@ -24,6 +24,16 @@ steps:
 
 
 - task: Npm@1
+  displayName: 'NPM NG Run Unit Tests'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run unit-test-ci'
+
+
+- task: Npm@1
   displayName: 'NPM NG Run End2End Tests'
   inputs:
     command: custom

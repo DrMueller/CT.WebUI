@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { IndividualsServicesModule } from '../../individuals-services.module';
 
-@Injectable()
+@Injectable({
+  providedIn: IndividualsServicesModule
+})
 export class IndividualsNavigationService {
-  constructor(private router: Router) { }
-
-  public navigateToOverview(): void {
-    this.router.navigate(['individuals']);
-  }
+  public constructor(private router: Router) { }
 
   public navigateToCreateIndividual(): void {
     this.router.navigate(['individuals', '-1']);
@@ -15,5 +14,9 @@ export class IndividualsNavigationService {
 
   public navigateToEditIndividual(id: string): void {
     this.router.navigate(['individuals', id]);
+  }
+
+  public navigateToOverview(): void {
+    this.router.navigate(['individuals']);
   }
 }

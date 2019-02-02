@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-@Injectable()
+import { IndividualsServicesModule } from '../../individuals-services.module';
+
+@Injectable({
+  providedIn: IndividualsServicesModule
+})
 export class IndividualDetailsFormBuilderService {
   public constructor(
     private formBuilder: FormBuilder

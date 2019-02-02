@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { IndividualsOverviewComponent } from './overview/components/individuals-overview';
+import { RouterModule, Routes } from '@angular/router';
 import { IndividualDetailsComponent } from './details/components/individual-details';
 import { IndividualDetailsResolver } from './details/resolvers';
 import { IndividualsComponent } from './entry-point/components/individuals';
+import { IndividualsOverviewComponent } from './overview/components/individuals-overview';
 
 const routes: Routes = [
   {
-    path: 'individuals',
+    path: '',
     component: IndividualsComponent,
     children: [
       {

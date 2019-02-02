@@ -1,8 +1,9 @@
+import moment = require('moment');
 import { by, ElementFinder, promise, protractor } from 'protractor';
 
-import { IndividualDetailsPage, IndividualsOverviewPage } from '../../../../../testing-infrastructure';
-import moment = require('moment');
-
+import {
+    IndividualDetailsPage, IndividualsOverviewPage
+} from '../../../../../testing-infrastructure';
 // Feature
 describe('Saving an Individual', () => {
   let individualDetailsPage: IndividualDetailsPage;
@@ -34,10 +35,12 @@ describe('Saving an Individual', () => {
         individualDetailsPage.saveButton.click();
       });
 
+      // Ensure outcome
       it('Then the user gets navigated to the Overview Page', async () => {
         expect(individualsOverviewPage.isDisplayed).toBe(true);
       });
 
+      // Ensure outcome
       it('Then the changed data is shown in the Overview Page', async () => {
         const allTableRows = individualsOverviewPage.individualsOverviewGrid.all(by.tagName('tr'));
         const filteredTableRows = allTableRows.filter(elem => {
@@ -78,10 +81,12 @@ describe('Saving an Individual', () => {
       individualDetailsPage.lastNameInput.setText('');
     });
 
+    // Ensure outcome
     it('Then the save button is disabled', () => {
       expect(individualDetailsPage.saveButton.isEnabled).toBe(false);
     });
 
+    // Ensure outcome
     it('Then the cancel button is enabled', () => {
       expect(individualDetailsPage.cancelButton.isEnabled).toBe(true);
     });

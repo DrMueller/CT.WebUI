@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppNavigationInitializationService, AppNavigationConfiguration, AppNavigationEntry } from '@drmueller/ng-app-navigation';
+import { AppNavigationConfiguration, AppNavigationEntry, AppNavigationInitializationService } from '@drmueller/ng-app-navigation';
 
 @Component({
   selector: 'app-root',

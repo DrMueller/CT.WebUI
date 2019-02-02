@@ -4,9 +4,12 @@ import { Individual } from '../../common/models';
 import {
   IndividualRepositoryService
 } from '../../common/repositories/individual-repository.service';
+import { IndividualsServicesModule } from '../../individuals-services.module';
 import { IndividualDetailsDto } from '../dtos';
 
-@Injectable()
+@Injectable({
+  providedIn: IndividualsServicesModule
+})
 export class IndividualDetailsDataService {
 
   public constructor(

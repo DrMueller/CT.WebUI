@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 
 import { HttpBaseService, ObjectFactoryService } from '@drmueller/ng-base-services';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LocalHttpService extends HttpBaseService {
   public constructor(httpClient: HttpClient, objectFactoryService: ObjectFactoryService) {
     super(httpClient, objectFactoryService);

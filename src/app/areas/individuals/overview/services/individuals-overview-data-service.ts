@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { IndividualRepositoryService } from '../../common/repositories/individual-repository.service';
+import { IndividualsServicesModule } from '../../individuals-services.module';
 import { IndividualOverviewEntryDto } from '../dtos';
 
-@Injectable()
+@Injectable({
+  providedIn: IndividualsServicesModule
+})
 export class IndividualsOverviewDataService {
 
   public constructor(

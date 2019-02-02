@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
+import { IndividualsServicesModule } from '../../individuals-services.module';
 import { IndividualDetailsDto } from '../dtos';
 import { IndividualDetailsDataService } from '../services/individual-details-data.service';
 
-@Injectable()
+@Injectable({
+  providedIn: IndividualsServicesModule
+})
 export class IndividualDetailsResolver implements Resolve<Promise<IndividualDetailsDto>>  {
   public constructor(private dataService: IndividualDetailsDataService) {
   }

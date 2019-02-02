@@ -1,18 +1,24 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-import { HttpBaseService, ObjectFactoryService } from '@drmueller/ng-base-services';
-import { AppSettingsProviderService } from '../app-settings';
+import { AppSettingsProviderService, HttpBaseService, ObjectFactoryService } from '@drmueller/ng-base-services';
+import { AppSettings } from '../app-settings';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CoreHttpService extends HttpBaseService {
+  private static readonly relativeJsonFilePath = './assets/app-settings/appsettings.json';
+
   public constructor(httpClient: HttpClient,
     objectFactoryService: ObjectFactoryService,
-    private appSettingsProvider: AppSettingsProviderService) {
+    private appSettingsProvider: AppSettingsProviderService<AppSettings>) {
     super(httpClient, objectFactoryService);
   }
 
   protected async getBaseUrlAsync(): Promise<string> {
-    return this.appSettingsProvider.provideAppSettingsAsync().then(s => s.coreServiceBaseUrl);
+    return this.appSettingsProvider
+      .provideAppSettingsAsync(CoreHttpService.relativeJsonFilePath)
+      .then(s => s.coreServiceBaseUrl);
   }
 }

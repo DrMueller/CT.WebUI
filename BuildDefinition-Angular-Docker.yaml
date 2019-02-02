@@ -30,7 +30,7 @@ steps:
 
     verbose: false
 
-    customCommand: 'run unit-test-ci'
+    customCommand: 'run ci-unit-test'
 
 
 - task: Npm@1
@@ -40,7 +40,7 @@ steps:
 
     verbose: false
 
-    customCommand: 'run e2e-ci'
+    customCommand: 'run ci-e2e'
 
 
 - task: Npm@1
@@ -50,7 +50,7 @@ steps:
 
     verbose: false
 
-    customCommand: 'run build-prod'
+    customCommand: 'run ci-build-prod'
 
 
 - task: YodLabs.VariableTasks.SetVariable.SetVariable@0

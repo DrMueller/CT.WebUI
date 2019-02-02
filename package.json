@@ -8,12 +8,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "e2e-ci": "ng run container-testing-e2e:ci",
     "e2e-debug-serve": "ng serve --port=4201",
     "e2e-debug-start": "node --inspect --inspect-brk ./node_modules/protractor/bin/protractor ./e2e/protractor.conf.js --baseUrl=http://localhost:4201/",
-    "build-prod": "ng build --output-path=dist --prod",
-    "unit-test-ci": "ng run container-testing:test",
-    "unit-test-chrome": "ng test --browsers=Chrome"
+    "unit-test-chrome": "ng test --browsers=Chrome",
+    "ci-build-prod": "ng build --output-path=dist --prod",
+    "ci-e2e": "ng run container-testing-e2e:ci",
+    "ci-unit-test": "ng test"
   },
   "private": true,
   "dependencies": {

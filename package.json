@@ -13,7 +13,7 @@
     "unit-test-chrome": "ng test --browsers=Chrome",
     "ci-build-prod": "ng build --output-path=dist --prod",
     "ci-e2e": "ng run container-testing-e2e:ci",
-    "ci-unit-test": "ng test"
+    "ci-unit-test": "ng run container-testing:unit-test"
   },
   "private": true,
   "dependencies": {

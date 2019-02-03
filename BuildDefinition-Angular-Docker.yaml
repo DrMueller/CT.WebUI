@@ -8,13 +8,13 @@ queue:
 
 steps:
 - task: Npm@1
-  displayName: 'NPM install'
+  displayName: 'Install NPM Packages'
   inputs:
     verbose: false
 
 
 - task: Npm@1
-  displayName: 'NPM NG Lint'
+  displayName: 'Lint'
   inputs:
     command: custom
 
@@ -24,7 +24,7 @@ steps:
 
 
 - task: Npm@1
-  displayName: 'NPM NG Run Unit Tests'
+  displayName: 'Run Unit Tests'
   inputs:
     command: custom
 
@@ -34,17 +34,28 @@ steps:
 
 
 - task: Npm@1
-  displayName: 'NPM NG Run End2End Tests'
+  displayName: Run End2End Tests'
   inputs:
     command: custom
 
     verbose: false
 
-    customCommand: 'run ci-e2e'
+    customCommand: 'run ci-e2e-test'
+
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFiles: '**/testresults/*-tests.xml'
+
+    failTaskOnFailedTests: true
+
+  condition: succeededOrFailed()
+
 
 
 - task: Npm@1
-  displayName: 'NPM NG Build'
+  displayName: 'Build Application for Production'
   inputs:
     command: custom
 

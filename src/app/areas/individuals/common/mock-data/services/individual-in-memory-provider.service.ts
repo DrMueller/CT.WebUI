@@ -21,6 +21,6 @@ export class IndividualInMemoryProviderService extends BaseInMemoryDataProviderS
   }
 
   protected get modelTypeName(): string {
-    return Individual.ModelName;
+    return Individual.name;
   }
 }

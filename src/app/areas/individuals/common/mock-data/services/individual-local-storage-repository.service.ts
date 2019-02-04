@@ -17,6 +17,6 @@ export class IndividualLocalStorageRepositoryService extends BaseLocalStorageRep
   }
 
   protected get tableKey(): string {
-    return Individual.ModelName;
+    return Individual.name;
   }
 }

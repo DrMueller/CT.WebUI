@@ -15,7 +15,7 @@ export class IndividualAdapterService implements IDtoAdapterService<Individual, 
     return 'id';
   }
   public get modelTypeName(): string {
-    return Individual.ModelName;
+    return Individual.name;
   }
 
   public adaptToDto(model: Individual): Individual {

@@ -34,7 +34,7 @@ steps:
 
 
 - task: Npm@1
-  displayName: Run End2End Tests'
+  displayName: Run End2End Tests
   inputs:
     command: custom
 
